@@ -1,7 +1,5 @@
 import { Lightning, Utils } from '@lightningjs/sdk'
 import Row from './components/row'
-import data from '../src/data/rowData.json'
-import { MovieData } from './models/models'
 
 interface AppTemplateSpec extends Lightning.Component.TemplateSpec {
   Background: {
@@ -21,6 +19,8 @@ export class App
    * for more information.
    */
 
+  readonly Row = this.tag('Background.Row')!
+
   static override _template(): Lightning.Component.Template<AppTemplateSpec> {
     return {
       w: 1920,
@@ -34,7 +34,6 @@ export class App
           y: 400,
           x: 70,
           type: Row,
-          data: data as MovieData,
         },
       },
     }
@@ -42,6 +41,17 @@ export class App
 
   override _getFocused(): Lightning.Component | null | undefined {
     return this.tag('Background.Row')
+  }
+
+  override _init(): void {
+    this._getDataAndUpdateRow()
+  }
+
+  _getDataAndUpdateRow = async () => {
+    const res = await fetch('../static/data/rowData.json')
+    const data = await res.json()
+    this.Row.patch({ data: data })
+    this._refocus()
   }
 
   static getFonts() {

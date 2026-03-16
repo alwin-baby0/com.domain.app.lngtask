@@ -12,6 +12,7 @@ class Row
   _index = 0
 
   readonly Wrapper = this.tag('Wrapper')
+  readonly Title = this.tag('Title')
 
   static override _template() {
     return {
@@ -19,6 +20,7 @@ class Row
         w: this.bindProp('_width'),
         h: this.bindProp('_height'),
         Title: {
+          alpha: 0,
           text: {
             textColor: textColor,
             text: 'Animated Movies',
@@ -76,6 +78,7 @@ class Row
       })
     }
     this.Wrapper.children = cards
+    this.Title.setSmooth('alpha', 1)
   }
 
   repositionWrapper() {
