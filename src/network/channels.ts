@@ -4,7 +4,6 @@ import type {
   SimpleErrorResponse,
   ApiResponse,
 } from '../models/models'
-import data from '../data/channelsData.json'
 
 async function fetchChannels(): Promise<ApiResponse<MovieData>> {
   const timeout = Math.random() * 1000 + 1000
@@ -17,6 +16,8 @@ async function fetchChannels(): Promise<ApiResponse<MovieData>> {
       responseCode: 500,
     }
   }
+  const res = await fetch('../static/data/channelsData.json')
+  const data = await res.json()
 
   return {
     status: 'success',
