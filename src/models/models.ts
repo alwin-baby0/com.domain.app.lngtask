@@ -7,3 +7,16 @@ export interface Movie {
 }
 
 export type MovieData = Movie[]
+
+export interface ApiResponse<T> {
+  status: string
+  responseCode: number
+  data?: T
+}
+
+export interface SimpleSuccessResponse {
+  data: MovieData
+}
+export interface SimpleErrorResponse {
+  error: true
+}

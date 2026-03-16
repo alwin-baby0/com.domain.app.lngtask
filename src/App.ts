@@ -1,7 +1,7 @@
 import { Lightning, Utils } from '@lightningjs/sdk'
 import Row from './components/row'
-import data from '../src/data/rowData.json'
-import { MovieData } from './models/models'
+import { SimpleErrorResponse, SimpleSuccessResponse } from './models/models'
+import { getChannelsData } from './network/channels'
 
 interface AppTemplateSpec extends Lightning.Component.TemplateSpec {
   Background: {
@@ -21,6 +21,8 @@ export class App
    * for more information.
    */
 
+  readonly Row = this.tag('Background.Row')!
+
   static override _template(): Lightning.Component.Template<AppTemplateSpec> {
     return {
       w: 1920,
@@ -34,14 +36,17 @@ export class App
           y: 400,
           x: 70,
           type: Row,
-          data: data as MovieData,
         },
       },
     }
   }
 
   override _getFocused(): Lightning.Component | null | undefined {
-    return this.tag('Background.Row')
+    return this.Row
+  }
+
+  override _init(): void {
+    this._getChannelsDataAndCreateChannels()
   }
 
   static getFonts() {
@@ -51,5 +56,12 @@ export class App
         url: Utils.asset('fonts/Roboto-Regular.ttf') as string,
       },
     ]
+  }
+
+  _getChannelsDataAndCreateChannels = async () => {
+    const data = await getChannelsData()
+    if (!(data as SimpleSuccessResponse)?.data || (data as SimpleErrorResponse)?.error) {
+      console.log('### error')
+    } else this.Row.patch({ data: (data as SimpleSuccessResponse)?.data })
   }
 }
