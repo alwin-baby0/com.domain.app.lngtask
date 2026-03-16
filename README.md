@@ -2,7 +2,25 @@
 
 ## com.domain.app.lngtask
 
-### Getting started
+## Mocked API & Loading/Error Simulation
+
+- The app mocks an API response and adds artificial delays (1.5-2.5 seconds) to simulate loading scenarios.
+- Induced errors are included to demonstrate error handling; errors appear randomly (about once every 5-10 reloads).
+- Users are provided with an option to retry loading the channels if an error occurs.
+
+## App Build Points
+
+- Built as a simple LightningJS screen that fetches a list of channels from a mock JSON file.
+- Channels are rendered as a list, each showing the channel name and a placeholder image.
+- Loading state is handled (shows a loading screen while fetching).
+- Error state is handled (shows a message if fetch fails, with retry option).
+- Layout is 1920x1080, suitable for TV screens.
+
+## Deployed Version
+
+- The deployed version of this branch can be found here: https://glistening-madeleine-a0dec5.netlify.app/
+
+### Getting started with using
 
 > Before you follow the steps below, make sure you have the
 [Lightning-CLI](https://rdkcentral.github.io/Lightning-CLI/#/) installed _globally_ only your system
