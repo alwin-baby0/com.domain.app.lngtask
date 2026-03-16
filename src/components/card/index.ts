@@ -33,7 +33,7 @@ class Card
         h: height,
         color: 0xff2a2a2a,
         rect: true,
-        shader: { type: Lightning.shaders.RoundedRectangle, radius: 20 },
+        shader: { type: Lightning.shaders.RoundedRectangle, radius: 12 },
         Focus: {
           alpha: 0,
           rect: true,
@@ -42,12 +42,12 @@ class Card
           w: width + focusWidth * 2,
           h: height + focusWidth * 2,
           color: textColor,
-          shader: { type: Lightning.shaders.RoundedRectangle, radius: 22 },
+          shader: { type: Lightning.shaders.RoundedRectangle, radius: 14 },
         },
         Image: {
           w: width,
           h: height,
-          shader: { type: Lightning.shaders.RoundedRectangle, radius: 20 },
+          shader: { type: Lightning.shaders.RoundedRectangle, radius: 12 },
           alpha: 0.01,
         },
       },
