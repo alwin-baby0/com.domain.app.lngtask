@@ -31,7 +31,7 @@ export class App
         Card: {
           type: Card,
           thumbnailImage:
-            'https://m.media-amazon.com/images/M/MV5BOTgxMDQwMDk0OF5BMl5BanBnXkFtZTgwNjU5OTg2NDE@._V1_SX300.jpg',
+            'https://m.media-amazon.com/images/M/MV5BMTEzNzY0OTg0NTdeQTJeQWpwZ15BbWU4MDU3OTg3MjUz._V1_SX300.jpg',
           title: 'text dvsj dhvd edew hvwedevw wvedv',
           subtitle: 'text dvsj dhvd edew hvwedevw wvedv',
         },

@@ -9,7 +9,7 @@ class Card
   __subtitle = ''
   __thumbnailImage = ''
 
-  readonly Thumbnail = this.tag('Thumbnail')
+  readonly Image = this.tag('Image')
   readonly Title = this.tag('Title')
   readonly Subtitle = this.tag('Subtitle')
 
@@ -24,9 +24,15 @@ class Card
       Thumbnail: {
         w: width,
         h: height,
-        color: 0xbbffffff,
+        color: 0xff2a2a2a,
         rect: true,
         shader: { type: Lightning.shaders.RoundedRectangle, radius: 20 },
+        Image: {
+          w: width,
+          h: height,
+          shader: { type: Lightning.shaders.RoundedRectangle, radius: 20 },
+          alpha: 0.01,
+        },
       },
       Title: {
         y: height + gap,
@@ -63,7 +69,15 @@ class Card
 
   set thumbnailImage(value: string) {
     this.__thumbnailImage = value
-    this.Thumbnail.patch({ src: this.__thumbnailImage })
+    this.Image.patch({ src: this.__thumbnailImage })
+  }
+
+  override _init(): void {
+    const onTxLoadedHandler = () => {
+      this.Image.setSmooth('alpha', 1)
+    }
+
+    this.Image.on('txLoaded', onTxLoadedHandler)
   }
 
   override _focus() {
