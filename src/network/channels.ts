@@ -30,6 +30,7 @@ export async function getChannelsData(): Promise<SimpleSuccessResponse | SimpleE
   if (res.status === 'success') {
     return { data: res.data ?? [] }
   } else {
+    console.error(res)
     return { error: true }
   }
 }

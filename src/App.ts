@@ -3,10 +3,12 @@ import Row from './components/row'
 import { SimpleErrorResponse, SimpleSuccessResponse } from './models/models'
 import { getChannelsData } from './network/channels'
 import LoadingScreen from './components/loadingScreen'
+import ErrorScreen from './components/errorScreen'
 
 interface AppTemplateSpec extends Lightning.Component.TemplateSpec {
   Background: {
     LoadingScreen: typeof LoadingScreen
+    ErrorScreen: typeof ErrorScreen
     Row: typeof Row
   }
 }
@@ -23,8 +25,11 @@ export class App
    * for more information.
    */
 
+  _focusedComponent: Lightning.Component | null | undefined = undefined
+
   readonly Row = this.tag('Background.Row')!
   readonly LoadingScreen = this.tag('Background.LoadingScreen')!
+  readonly ErrorScreen = this.tag('Background.ErrorScreen')!
 
   static override _template(): Lightning.Component.Template<AppTemplateSpec> {
     return {
@@ -36,7 +41,12 @@ export class App
         color: 0xff000000,
         rect: true,
         LoadingScreen: {
+          alpha: 1,
           type: LoadingScreen,
+        },
+        ErrorScreen: {
+          visible: false,
+          type: ErrorScreen,
         },
         Row: {
           y: 400,
@@ -48,10 +58,11 @@ export class App
   }
 
   override _getFocused(): Lightning.Component | null | undefined {
-    return this.Row
+    return this._focusedComponent
   }
 
   override _init(): void {
+    this.ErrorScreen.patch({ enterHandler: this._getChannelsDataAndCreateChannels })
     this._getChannelsDataAndCreateChannels()
   }
 
@@ -65,11 +76,16 @@ export class App
   }
 
   _getChannelsDataAndCreateChannels = async () => {
+    this.ErrorScreen.patch({ visible: false })
     this.LoadingScreen.setSmooth('alpha', 1)
     const data = await getChannelsData()
     if (!(data as SimpleSuccessResponse)?.data || (data as SimpleErrorResponse)?.error) {
-      console.log('### error')
-    } else this.Row.patch({ data: (data as SimpleSuccessResponse)?.data })
+      this.ErrorScreen.patch({ visible: true })
+      this._focusedComponent = this.ErrorScreen
+    } else {
+      this.Row.patch({ data: (data as SimpleSuccessResponse)?.data })
+      this._focusedComponent = this.Row
+    }
     this.LoadingScreen.setSmooth('alpha', 0)
     this._refocus()
   }
