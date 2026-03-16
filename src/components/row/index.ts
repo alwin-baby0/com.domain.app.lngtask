@@ -85,7 +85,9 @@ class Row
     const wrapper = this.Wrapper
     if (this._index <= this.__data?.length - cardDinmenions.minimumCadsInViewport) {
       wrapper.setSmooth('x', -(cardDinmenions.width + cardDinmenions.marginRight) * this._index, {
-        duration: 0.3,
+        delay: 0.025,
+        duration: 0.4,
+        timingFunction: 'cubic-bezier(0.25, 0.25, 0.25, 0.25)',
       })
     }
   }
