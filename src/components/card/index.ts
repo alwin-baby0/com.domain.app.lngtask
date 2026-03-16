@@ -12,10 +12,10 @@ class Card
   __thumbnailImage = ''
   _txLoadedOrFailed = false
 
-  readonly Image = this.tag('Image')
-  readonly Title = this.tag('Title')
-  readonly Subtitle = this.tag('Subtitle')
-  readonly Focus = this.tag('Focus')
+  readonly Image = this.tag('Image')!
+  readonly Title = this.tag('Title')!
+  readonly Subtitle = this.tag('Subtitle')!
+  readonly Focus = this.tag('Focus')!
 
   static override _template() {
     const width = cardDinmenions.width

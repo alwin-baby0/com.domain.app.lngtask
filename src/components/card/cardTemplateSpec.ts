@@ -5,6 +5,13 @@ interface CardTemplateSpec extends Lightning.Component.TemplateSpecLoose {
   __subtitle: string
   __thumbnailImage: string
 
+  Thumbnail: {
+    Focus: object
+    Image: object
+  }
+  Title: object
+  Subtitle: object
+
   title: string
   subtitle: string
   thumbnailImage: string

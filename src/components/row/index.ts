@@ -81,6 +81,7 @@ class Row
     this.Title.setSmooth('alpha', 1)
   }
 
+  // handle scrolling
   repositionWrapper() {
     const wrapper = this.Wrapper
     if (this._index <= this.__data?.length - cardDinmenions.minimumCadsInViewport) {
