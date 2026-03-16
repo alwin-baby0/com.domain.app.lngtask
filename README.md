@@ -5,6 +5,8 @@
 ## Horizontal Row & Card Component
 
 - The app displays a horizontal row of content cards generated from a mock JSON response.
+- If running the app or opening the deployed version in a browser, make sure that the
+app is viewed in a 1920x1080 viewport in inspector mode. Must click the view area before attempting navigation using arrow keys.
 - Built as a LightningJS component that renders a scrollable row of cards.
 - Each card shows a thumbnail image, title, and subtitle.
 - The row handles remote control focus: left/right navigation with d-pad, smooth scroll animation, and visible focus state on the active card.
