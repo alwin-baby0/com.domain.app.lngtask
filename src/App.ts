@@ -32,12 +32,16 @@ export class App
         rect: true,
         Row: {
           y: 400,
-          x: 40,
+          x: 70,
           type: Row,
           data: data as MovieData,
         },
       },
     }
+  }
+
+  override _getFocused(): Lightning.Component | null | undefined {
+    return this.tag('Background.Row')
   }
 
   static getFonts() {

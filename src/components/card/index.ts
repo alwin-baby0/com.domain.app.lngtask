@@ -1,6 +1,7 @@
 import Lightning from '@lightningjs/sdk/src/Lightning'
 import CardTemplateSpec from './cardTemplateSpec'
-import { cardDinmenions } from '../../constants'
+import { cardDinmenions, textColor } from '../../constants'
+import { Utils } from '@lightningjs/sdk'
 
 class Card
   extends Lightning.Component<CardTemplateSpec>
@@ -9,10 +10,12 @@ class Card
   __title = ''
   __subtitle = ''
   __thumbnailImage = ''
+  _txLoadedOrFailed = false
 
   readonly Image = this.tag('Image')
   readonly Title = this.tag('Title')
   readonly Subtitle = this.tag('Subtitle')
+  readonly Focus = this.tag('Focus')
 
   static override _template() {
     const width = cardDinmenions.width
@@ -20,14 +23,27 @@ class Card
     const gap = 10
     const titleFontSize = 25
     const subtitleFontSize = 20
+    const focusWidth = 3
 
     return {
+      w: width,
+      h: height,
       Thumbnail: {
         w: width,
         h: height,
         color: 0xff2a2a2a,
         rect: true,
         shader: { type: Lightning.shaders.RoundedRectangle, radius: 20 },
+        Focus: {
+          alpha: 0,
+          rect: true,
+          x: -focusWidth,
+          y: -focusWidth,
+          w: width + focusWidth * 2,
+          h: height + focusWidth * 2,
+          color: textColor,
+          shader: { type: Lightning.shaders.RoundedRectangle, radius: 22 },
+        },
         Image: {
           w: width,
           h: height,
@@ -37,7 +53,9 @@ class Card
       },
       Title: {
         y: height + gap,
+        alpha: 0.5,
         text: {
+          textColor: textColor,
           maxLines: 1,
           maxLinesSuffix: '...',
           wordWrap: true,
@@ -46,8 +64,10 @@ class Card
         },
       },
       Subtitle: {
-        y: height + gap * 2 + 25,
+        y: height + gap * 2 + titleFontSize,
+        alpha: 0.5,
         text: {
+          textColor: textColor,
           maxLines: 1,
           maxLinesSuffix: '...',
           wordWrap: true,
@@ -75,22 +95,32 @@ class Card
 
   override _init(): void {
     const onTxLoadedHandler = () => {
+      this._txLoadedOrFailed = true
       this.Image.setSmooth('alpha', 1)
+      if (this.hasFocus()) this._focus()
+    }
+
+    const onTxErrorHandler = () => {
+      this._txLoadedOrFailed = true
+      this.Image.patch({ src: Utils.asset('images/placeholder.png') })
     }
 
     this.Image.on('txLoaded', onTxLoadedHandler)
+    this.Image.on('txError', onTxErrorHandler)
   }
 
   override _focus() {
-    this.patch({
-      scale: 1.15,
-    })
+    this.setSmooth('scale', 1.05)
+    this.Title.setSmooth('alpha', 1)
+    this.Subtitle.setSmooth('alpha', 1)
+    if (this._txLoadedOrFailed) this.Focus.setSmooth('alpha', 1)
   }
 
   override _unfocus() {
-    this.patch({
-      scale: 1,
-    })
+    this.setSmooth('scale', 1)
+    this.Title.setSmooth('alpha', 0.5)
+    this.Subtitle.setSmooth('alpha', 0.5)
+    this.Focus.setSmooth('alpha', 0)
   }
 }
 
