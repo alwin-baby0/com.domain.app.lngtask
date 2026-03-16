@@ -11,6 +11,8 @@
 ## App Build Points
 
 - Built as a simple LightningJS screen that fetches a list of channels from a mock JSON file.
+- If running the app or opening the deployed version in a browser, make sure that the
+app is viewed in a 1920x1080 viewport in inspector mode. Must click the view area before attempting navigation using arrow keys.
 - Channels are rendered as a list, each showing the channel name and a placeholder image.
 - Loading state is handled (shows a loading screen while fetching).
 - Error state is handled (shows a message if fetch fails, with retry option).
