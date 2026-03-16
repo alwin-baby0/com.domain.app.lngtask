@@ -4,7 +4,7 @@ import type {
   SimpleErrorResponse,
   ApiResponse,
 } from '../models/models'
-import data from '../data/rowData.json'
+import data from '../data/channelsData.json'
 
 async function fetchChannels(): Promise<ApiResponse<MovieData>> {
   const timeout = Math.random() * 1000 + 1000

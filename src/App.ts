@@ -49,7 +49,7 @@ export class App
           type: ErrorScreen,
         },
         Row: {
-          y: 400,
+          y: 500,
           x: 70,
           type: Row,
         },

@@ -1,9 +1,9 @@
 export interface Movie {
-  id: number
+  id: number | string
   title: string
-  subtitle: string
+  subtitle?: string
   posterURL: string
-  imdbId: string
+  imdbId?: string
 }
 
 export type MovieData = Movie[]

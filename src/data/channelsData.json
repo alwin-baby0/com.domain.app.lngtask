@@ -1,0 +1,62 @@
+[
+  {
+    "id": "702096936061",
+    "title": "Dubai",
+    "posterURL": "https://dmi-vod-prod.akamaized.net/images/channels/DTV_1280x720.png"
+  },
+  {
+    "id": "702096936063",
+    "title": "Sama Dubai",
+    "posterURL": "https://dmi-vod-prod.akamaized.net/images/channels/SamaTV_1280x720.png"
+  },
+  {
+    "id": "702096936079",
+    "title": "Dubai Sports 2",
+    "posterURL": "https://dmi-vod-prod.akamaized.net/images/channels/Dsports_2_1280x720.png"
+  },
+  {
+    "id": "702096936083",
+    "title": "Dubai Racing 2",
+    "posterURL": "https://dmi-vod-prod.akamaized.net/images/channels/Racing_2_1280x720.png"
+  },
+  {
+    "id": "702096936073",
+    "title": "Noor DubaiTV",
+    "posterURL": "https://dmi-vod-prod.akamaized.net/images/channels/Noor_Dubai_TV_1280x720.png"
+  },
+  {
+    "id": "702096936069",
+    "title": "One Tv",
+    "posterURL": "https://dmi-vod-prod.akamaized.net/images/channels/OneTV_1280x720.png"
+  },
+  {
+    "id": "702096936067",
+    "title": "Dubai Sports 1",
+    "posterURL": "https://dmi-vod-prod.akamaized.net/images/channels/Dsports_1_1280x720.png"
+  },
+  {
+    "id": "702096936065",
+    "title": "Dubai Racing",
+    "posterURL": "https://dmi-vod-prod.akamaized.net/images/channels/Racing_1_1280x720.png"
+  },
+  {
+    "id": "702096936071",
+    "title": "Dubai Zaman",
+    "posterURL": "https://dmi-vod-prod.akamaized.net/images/channels/Zaman_1280x720.png"
+  },
+  {
+    "id": "702096936075",
+    "title": "Dubai Radio",
+    "posterURL": "https://dmi-vod-prod.akamaized.net/images/channels/DRadio_1280x720.png"
+  },
+  {
+    "id": "702096936077",
+    "title": "Noor Dubai Radio",
+    "posterURL": "https://dmi-vod-prod.akamaized.net/images/channels/Noor_Dubai_Radio_1280x720.png"
+  },
+  {
+    "id": "702096936093",
+    "title": "Quran Radio",
+    "posterURL": "https://dmi-vod-prod.akamaized.net/images/channels/Quran_1280x720.png"
+  }
+]
