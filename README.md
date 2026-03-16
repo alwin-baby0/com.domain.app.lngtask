@@ -2,7 +2,22 @@
 
 ## com.domain.app.lngtask
 
-### Getting started
+## Horizontal Row & Card Component
+
+- The app displays a horizontal row of content cards generated from a mock JSON response.
+- Built as a LightningJS component that renders a scrollable row of cards.
+- Each card shows a thumbnail image, title, and subtitle.
+- The row handles remote control focus: left/right navigation with d-pad, smooth scroll animation, and visible focus state on the active card.
+- The component accepts its data via props.
+
+## Component Design Points
+
+- Horizontal scrolling row for TV interface
+- Card focus and navigation with remote
+- Smooth animation and clear focus indication
+- Flexible data input via props
+
+### Getting started with using
 
 > Before you follow the steps below, make sure you have the
 [Lightning-CLI](https://rdkcentral.github.io/Lightning-CLI/#/) installed _globally_ only your system
