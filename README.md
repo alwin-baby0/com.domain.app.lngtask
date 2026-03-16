@@ -17,6 +17,10 @@
 - Smooth animation and clear focus indication
 - Flexible data input via props
 
+## Deployed Version
+
+- The deployed version of this branch can be found here: https://lucent-gnome-aabd72.netlify.app/
+
 ### Getting started with using
 
 > Before you follow the steps below, make sure you have the
