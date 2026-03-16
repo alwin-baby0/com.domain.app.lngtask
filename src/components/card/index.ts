@@ -23,7 +23,7 @@ class Card
     const gap = 10
     const titleFontSize = 25
     const subtitleFontSize = 20
-    const focusWidth = 3
+    const focusWidth = 4
 
     return {
       w: width,

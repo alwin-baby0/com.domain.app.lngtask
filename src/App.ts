@@ -1,6 +1,6 @@
 import { Lightning, Utils } from '@lightningjs/sdk'
 import Row from './components/row'
-import data from '../src/data/data.json'
+import data from '../src/data/rowData.json'
 import { MovieData } from './models/models'
 
 interface AppTemplateSpec extends Lightning.Component.TemplateSpec {
