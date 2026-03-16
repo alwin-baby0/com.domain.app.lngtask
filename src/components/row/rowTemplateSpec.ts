@@ -4,6 +4,11 @@ import { MovieData } from '../../models/models'
 interface RowTemplateSpec extends Lightning.Component.TemplateSpecLoose {
   __data: MovieData
 
+  Row: {
+    Title: object
+    RowItems: { Slider: { Wrapper: object } }
+  }
+
   data: MovieData
 }
 
