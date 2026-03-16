@@ -12,7 +12,7 @@ async function fetchChannels(): Promise<ApiResponse<MovieData>> {
 
   // throws errors in a random manner
   const errorChance = Math.floor(Math.random() * 10)
-  if (errorChance === 2 || errorChance === 5) {
+  if (errorChance === 2 || errorChance === 5 || errorChance === 7) {
     return {
       status: 'error',
       responseCode: 500,
