@@ -1,9 +1,11 @@
 import { Lightning, Utils } from '@lightningjs/sdk'
-import Card from './components/card'
+import Row from './components/row'
+import data from '../src/data/data.json'
+import { MovieData } from './models/models'
 
 interface AppTemplateSpec extends Lightning.Component.TemplateSpec {
   Background: {
-    Card: typeof Card
+    Row: typeof Row
   }
 }
 
@@ -28,12 +30,11 @@ export class App
         h: 1080,
         color: 0xff000000,
         rect: true,
-        Card: {
-          type: Card,
-          thumbnailImage:
-            'https://m.media-amazon.com/images/M/MV5BMTEzNzY0OTg0NTdeQTJeQWpwZ15BbWU4MDU3OTg3MjUz._V1_SX300.jpg',
-          title: 'text dvsj dhvd edew hvwedevw wvedv',
-          subtitle: 'text dvsj dhvd edew hvwedevw wvedv',
+        Row: {
+          y: 400,
+          x: 40,
+          type: Row,
+          data: data as MovieData,
         },
       },
     }

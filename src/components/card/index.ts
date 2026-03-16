@@ -1,5 +1,6 @@
 import Lightning from '@lightningjs/sdk/src/Lightning'
 import CardTemplateSpec from './cardTemplateSpec'
+import { cardDinmenions } from '../../constants'
 
 class Card
   extends Lightning.Component<CardTemplateSpec>
@@ -14,8 +15,8 @@ class Card
   readonly Subtitle = this.tag('Subtitle')
 
   static override _template() {
-    const width = 280
-    const height = 420
+    const width = cardDinmenions.width
+    const height = cardDinmenions.height
     const gap = 10
     const titleFontSize = 25
     const subtitleFontSize = 20
