@@ -1,10 +1,9 @@
 import { Lightning, Utils } from '@lightningjs/sdk'
+import Card from './components/card'
 
 interface AppTemplateSpec extends Lightning.Component.TemplateSpec {
   Background: {
-    Logo: object
-    Mystery: object
-    Text: object
+    Card: typeof Card
   }
 }
 
@@ -19,10 +18,6 @@ export class App
    * See https://lightningjs.io/docs/#/lightning-core-reference/TypeScript/Components/TemplateSpecs?id=using-a-template-spec
    * for more information.
    */
-  readonly Background = this.getByRef('Background')!
-  readonly Logo = this.Background.getByRef('Logo')!
-  readonly Text = this.Background.getByRef('Text')!
-  readonly Mystery = this.Background.getByRef('Mystery')!
 
   static override _template(): Lightning.Component.Template<AppTemplateSpec> {
     return {
@@ -31,8 +26,15 @@ export class App
       Background: {
         w: 1920,
         h: 1080,
-        color: 0xfffbb03b,
-        src: Utils.asset('images/background.png'),
+        color: 0xff000000,
+        rect: true,
+        Card: {
+          type: Card,
+          thumbnailImage:
+            'https://m.media-amazon.com/images/M/MV5BOTgxMDQwMDk0OF5BMl5BanBnXkFtZTgwNjU5OTg2NDE@._V1_SX300.jpg',
+          title: 'text dvsj dhvd edew hvwedevw wvedv',
+          subtitle: 'text dvsj dhvd edew hvwedevw wvedv',
+        },
       },
     }
   }
@@ -44,42 +46,5 @@ export class App
         url: Utils.asset('fonts/Roboto-Regular.ttf') as string,
       },
     ]
-  }
-
-  override _handleEnter() {
-    this.Logo.setSmooth('scale', 2, {
-      duration: 2.5,
-    })
-    this.Text.setSmooth('y', 800, {
-      duration: 2.5,
-    })
-    this.Text.setSmooth('alpha', 0, {
-      duration: 2.5,
-      timingFunction: 'ease-out',
-    })
-    this.Mystery.smooth = {
-      x: 1025,
-      y: 550,
-      scale: 1,
-    }
-  }
-
-  override _init() {
-    this.stage.transitions.defaultTransitionSettings.duration = 3
-    this.Background.animation({
-      duration: 15,
-      repeat: -1,
-      delay: 1,
-      actions: [
-        {
-          p: 'color',
-          v: {
-            0: { v: 0xfffbb03b },
-            0.5: { v: 0xfff46730 },
-            0.8: { v: 0xfffbb03b },
-          },
-        },
-      ],
-    }).start()
   }
 }
