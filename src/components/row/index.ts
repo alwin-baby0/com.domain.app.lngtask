@@ -70,9 +70,9 @@ class Row
         width: width,
         height: height,
         type: Card,
-        thumbnailImage: cardData?.posterURL,
-        title: cardData?.title,
-        subtitle: cardData?.subtitle,
+        thumbnailImage: cardData?.posterURL ?? '',
+        title: cardData?.title ?? '',
+        subtitle: cardData?.subtitle ?? '',
       })
     }
     this.Wrapper.children = cards
@@ -80,7 +80,7 @@ class Row
 
   repositionWrapper() {
     const wrapper = this.Wrapper
-    if (this._index < this.__data?.length - cardDinmenions.minimumCadsInViewport) {
+    if (this._index <= this.__data?.length - cardDinmenions.minimumCadsInViewport) {
       wrapper.setSmooth('x', -(cardDinmenions.width + cardDinmenions.marginRight) * this._index, {
         duration: 0.3,
       })
