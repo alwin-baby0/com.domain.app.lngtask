@@ -6,9 +6,11 @@ import type {
 } from '../models/models'
 
 async function fetchChannels(): Promise<ApiResponse<MovieData>> {
-  const timeout = Math.random() * 1000 + 1000
+  const timeout = Math.random() * 1000 + 1500
+  // 1.5 to 2.5 seconds delay
   await new Promise((resolve) => setTimeout(resolve, timeout))
 
+  // throws errors in a random manner
   const errorChance = Math.floor(Math.random() * 10)
   if (errorChance === 2 || errorChance === 5) {
     return {

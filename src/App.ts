@@ -76,8 +76,10 @@ export class App
   }
 
   _getChannelsDataAndCreateChannels = async () => {
+    // hide error screen and show loading screen
     this.ErrorScreen.patch({ visible: false })
     this.LoadingScreen.setSmooth('alpha', 1)
+
     const data = await getChannelsData()
     if (!(data as SimpleSuccessResponse)?.data || (data as SimpleErrorResponse)?.error) {
       this.ErrorScreen.patch({ visible: true })
@@ -86,6 +88,8 @@ export class App
       this.Row.patch({ data: (data as SimpleSuccessResponse)?.data })
       this._focusedComponent = this.Row
     }
+
+    // hide loading screen and refocus
     this.LoadingScreen.setSmooth('alpha', 0)
     this._refocus()
   }
