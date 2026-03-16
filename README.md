@@ -16,6 +16,7 @@
 - Card focus and navigation with remote
 - Smooth animation and clear focus indication
 - Flexible data input via props
+- The app is developed for 1920x1080 resolution, suitable for TV viewing.
 
 ## Deployed Version
 
